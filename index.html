@@ -103,6 +103,8 @@
             gap: 10px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(36, 170, 226, 0.4);
+            cursor: pointer;
+            border: none;
         }
 
         .download-btn:hover {
@@ -113,6 +115,240 @@
 
         .download-btn:active {
             transform: translateY(0);
+        }
+
+        /* Download Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .download-modal {
+            background: linear-gradient(135deg, #063a50, #0a4a65);
+            border-radius: 30px;
+            padding: 50px 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            border: 2px solid rgba(36, 170, 226, 0.5);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: modalSlideUp 0.5s ease-out;
+        }
+
+        @keyframes modalSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: #b3b3b3;
+            font-size: 28px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            transform: rotate(90deg);
+        }
+
+        .modal-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 30px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .modal-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .modal-title {
+            font-size: 32px;
+            color: #24aae2;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(36, 170, 226, 0.5);
+        }
+
+        .modal-subtitle {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .modal-message {
+            font-size: 15px;
+            color: #b3b3b3;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .download-progress {
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #24aae2, #2bc4ff);
+            border-radius: 10px;
+            width: 0%;
+            animation: progressAnimation 2s ease-out forwards;
+        }
+
+        @keyframes progressAnimation {
+            0% {
+                width: 0%;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        .progress-text {
+            font-size: 14px;
+            color: #24aae2;
+            font-weight: 600;
+        }
+
+        .modal-features {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .modal-features h4 {
+            color: #24aae2;
+            font-size: 16px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: #b3b3b3;
+            font-size: 14px;
+        }
+
+        .feature-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-item svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .modal-btn-primary {
+            background: linear-gradient(135deg, #24aae2, #1a8ab8);
+            color: white;
+            box-shadow: 0 8px 25px rgba(36, 170, 226, 0.4);
+        }
+
+        .modal-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(36, 170, 226, 0.6);
+        }
+
+        .modal-btn-secondary {
+            background: transparent;
+            color: #b3b3b3;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
         }
 
         /* Main Content */
@@ -289,6 +525,8 @@
             gap: 10px;
             transition: all 0.3s ease;
             box-shadow: 0 8px 25px rgba(36, 170, 226, 0.4);
+            cursor: pointer;
+            border: none;
         }
 
         .primary-btn:hover {
@@ -372,10 +610,98 @@
                 max-width: 300px;
                 justify-content: center;
             }
+
+            .download-modal {
+                padding: 40px 30px;
+            }
+
+            .modal-title {
+                font-size: 26px;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Download Modal -->
+    <div class="modal-overlay" id="downloadModal">
+        <div class="download-modal">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            
+            <div class="modal-icon">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="#24aae2" opacity="0.2"/>
+                    <path d="M50 20v40M50 60l-12-12M50 60l12-12" stroke="#24aae2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M25 70v5a5 5 0 0 0 5 5h40a5 5 0 0 0 5-5v-5" stroke="#24aae2" stroke-width="6" stroke-linecap="round"/>
+                    <circle cx="50" cy="50" r="48" stroke="#24aae2" stroke-width="2" stroke-dasharray="10 5" opacity="0.3">
+                        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="20s" repeatCount="indefinite"/>
+                    </circle>
+                </svg>
+            </div>
+
+            <h2 class="modal-title">🎉 Awesome Choice!</h2>
+            <p class="modal-subtitle">Your Musical Journey Begins Now</p>
+            <p class="modal-message">
+                Get ready to experience unlimited music streaming without any restrictions. 
+                Your download will begin in a moment!
+            </p>
+
+            <div class="download-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <p class="progress-text">Preparing your download...</p>
+            </div>
+
+            <div class="modal-features">
+                <h4>✨ What You're Getting:</h4>
+                <div class="feature-item">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 6L9 17l-5-5" stroke="#24aae2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Unlimited music streaming - 100% free</span>
+                </div>
+                <div class="feature-item">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 6L9 17l-5-5" stroke="#24aae2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Zero advertisements, ever</span>
+                </div>
+                <div class="feature-item">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 6L9 17l-5-5" stroke="#24aae2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Millions of songs at your fingertips</span>
+                </div>
+                <div class="feature-item">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 6L9 17l-5-5" stroke="#24aae2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Beautiful, easy-to-use interface</span>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-secondary" onclick="closeModal()">
+                    Maybe Later
+                </button>
+                <a href="https://github.com/kunals495/Freebie-music-Web/releases/download/version1/application-0bad86fe-db19-456d-b886-6173fbbc2eea.apk" 
+                   class="modal-btn modal-btn-primary" 
+                   download
+                   onclick="handleDownload()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 3v12M12 15l-4-4M12 15l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M3 17v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Download Now
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Download Banner -->
     <div class="download-banner">
         <div class="banner-content">
@@ -388,13 +714,13 @@
                     <p>Get unlimited music on your device - No Ads, No Premium!</p>
                 </div>
             </div>
-            <a href="#download" class="download-btn">
+            <button class="download-btn" onclick="openDownloadModal()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 3v12M12 15l-4-4M12 15l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M3 17v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 </svg>
                 Download APK
-            </a>
+            </button>
         </div>
     </div>
 
@@ -458,13 +784,13 @@
             </h2>
             <p>Join thousands of music lovers who chose freedom over premium</p>
             <div class="cta-buttons">
-                <a href="#" class="primary-btn" onclick="downloadAPK()">
+                <button class="primary-btn" onclick="openDownloadModal()">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 3v12M12 15l-4-4M12 15l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M3 17v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                     Download APK Now
-                </a>
+                </button>
                 <a href="#features" class="secondary-btn">Learn More</a>
             </div>
         </div>
@@ -515,33 +841,63 @@
     </div>
 
     <script>
-        function downloadAPK() {
-            // Replace FILE_ID with your Google Drive file ID
-            // Example: If your link is https://drive.google.com/file/d/1ABC123xyz/view
-            // Then FILE_ID is: 1ABC123xyz
-            const GOOGLE_DRIVE_FILE_ID = 'YOUR_FILE_ID_HERE';
-            
-            // This converts Google Drive link to direct download
-            const downloadURL = `https://drive.google.com/uc?export=download&id=${GOOGLE_DRIVE_FILE_ID}`;
-            
-            alert('🎉 Thank you for choosing Freebie Music!\n\nYour download will begin shortly.\n\nGet ready to enjoy unlimited music without any restrictions!');
-            
-            // Start download
-            window.location.href = downloadURL;
+        function openDownloadModal() {
+            const modal = document.getElementById('downloadModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
+
+        function closeModal() {
+            const modal = document.getElementById('downloadModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        function handleDownload() {
+            // Update progress text
+            setTimeout(() => {
+                const progressText = document.querySelector('.progress-text');
+                if (progressText) {
+                    progressText.textContent = 'Download started! Check your downloads folder.';
+                }
+            }, 1000);
+
+            // Close modal after 3 seconds
+            setTimeout(() => {
+                closeModal();
+            }, 3000);
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('downloadModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 }
             });
+        });
+
+        // Prevent default download link behavior in modal to keep it open briefly
+        document.querySelector('.modal-btn-primary').addEventListener('click', function(e) {
+            e.preventDefault();
+            handleDownload();
+            // Trigger actual download
+            window.location.href = this.getAttribute('href');
         });
     </script>
 </body>
