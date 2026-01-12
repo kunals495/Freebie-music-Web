@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freebie Music - Free Music Without Limits</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(180deg, #063a50 0%, #121212 70%);
+            min-height: 100vh;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Download Banner */
+        .download-banner {
+            background: rgba(36, 170, 226, 0.15);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(36, 170, 226, 0.3);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .banner-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .banner-text {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .banner-icon {
+            width: 58px;
+            height: 58px;
+            animation: bounce 2s infinite;
+        }
+        
+        .banner-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .banner-text h3 {
+            font-size: 18px;
+            color: #24aae2;
+            font-weight: 700;
+        }
+
+        .banner-text p {
+            font-size: 14px;
+            color: #b3b3b3;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #24aae2, #1a8ab8);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(36, 170, 226, 0.4);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(36, 170, 226, 0.6);
+            background: linear-gradient(135deg, #2bc4ff, #24aae2);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 80px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #24aae2, #063a50);
+            border-radius: 30px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px rgba(36, 170, 226, 0.3);
+            padding: 20px;
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .brand-name {
+            font-size: 48px;
+            font-weight: 800;
+            color: #24aae2;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(36, 170, 226, 0.5);
+        }
+
+        .tagline {
+            font-size: 24px;
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #b3b3b3;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: rgba(40, 40, 40, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(36, 170, 226, 0.2);
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(36, 170, 226, 0.3);
+            border-color: rgba(36, 170, 226, 0.5);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            color: #24aae2;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #b3b3b3;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            background: rgba(36, 170, 226, 0.1);
+            border-radius: 30px;
+            padding: 50px 30px;
+            margin-bottom: 60px;
+            border: 2px solid rgba(36, 170, 226, 0.3);
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            color: #b3b3b3;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, #24aae2, #1a8ab8);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(36, 170, 226, 0.4);
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(36, 170, 226, 0.6);
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: #24aae2;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            border: 2px solid #24aae2;
+            transition: all 0.3s ease;
+        }
+
+        .secondary-btn:hover {
+            background: rgba(36, 170, 226, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(36, 170, 226, 0.2);
+            color: #808080;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #24aae2;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #2bc4ff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .banner-content {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .brand-name {
+                font-size: 36px;
+            }
+
+            .tagline {
+                font-size: 20px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .cta-section h2 {
+                font-size: 28px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .primary-btn, .secondary-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Download Banner -->
+    <div class="download-banner">
+        <div class="banner-content">
+            <div class="banner-text">
+                <span class="banner-icon">
+                    <img src="./assets/freenie1.png" alt="Freebie Music Icon">
+                </span>
+                <div>
+                    <h3>Download Freebie Music App</h3>
+                    <p>Get unlimited music on your device - No Ads, No Premium!</p>
+                </div>
+            </div>
+            <a href="#download" class="download-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 3v12M12 15l-4-4M12 15l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 17v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Download APK
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="./assets/freenie1.png" alt="Freebie Music Logo">
+                </div>
+            </div>
+            <h1 class="brand-name">Freebie Music</h1>
+            <h2 class="tagline">Hurry up! Free music is waiting for you...</h2>
+            <p class="subtitle">
+                Experience unlimited music streaming without ads, without premium subscriptions, without limits. 
+                Your personal music paradise is just one click away.
+            </p>
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="32" r="30" fill="#24aae2" opacity="0.2"/>
+                    <path d="M32 12C20.954 12 12 20.954 12 32s8.954 20 20 20 20-8.954 20-20S43.046 12 32 12zm0 36c-8.822 0-16-7.178-16-16s7.178-16 16-16 16 7.178 16 16-7.178 16-16 16z" fill="#24aae2"/>
+                    <path d="M32 22c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10zm0 16c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6z" fill="#24aae2"/>
+                    <circle cx="32" cy="32" r="3" fill="#24aae2"/>
+                </svg>
+                <h3>100% Free Forever</h3>
+                <p>No hidden fees, no premium plans, no subscriptions. Just pure, unlimited music streaming completely free.</p>
+            </div>
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="32" r="30" fill="#24aae2" opacity="0.2"/>
+                    <path d="M32 12C20.954 12 12 20.954 12 32s8.954 20 20 20 20-8.954 20-20S43.046 12 32 12zm0 36c-8.822 0-16-7.178-16-16s7.178-16 16-16 16 7.178 16 16-7.178 16-16 16z" fill="#24aae2"/>
+                    <path d="M42 22L22 42M22 22l20 20" stroke="#24aae2" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+                <h3>Zero Advertisements</h3>
+                <p>Enjoy uninterrupted music without any annoying ads. Your listening experience is our priority.</p>
+            </div>
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="32" r="30" fill="#24aae2" opacity="0.2"/>
+                    <path d="M32 12l6.18 12.52L52 26.84l-10 9.74 2.36 13.76L32 44.04l-12.36 6.3L22 36.58l-10-9.74 13.82-2.32L32 12z" fill="#24aae2"/>
+                </svg>
+                <h3>Unlimited Access</h3>
+                <p>Access millions of songs, create unlimited playlists, and discover new music every day.</p>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section" id="download">
+            <h2>Ready to Groove? 
+                <svg style="width: 40px; height: 40px; display: inline-block; vertical-align: middle; margin-left: 10px;" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M32 12v32M20 32c0 6.627 5.373 12 12 12s12-5.373 12-12" stroke="#24aae2" stroke-width="4" stroke-linecap="round"/>
+                    <circle cx="20" cy="20" r="4" fill="#24aae2"/>
+                    <circle cx="44" cy="20" r="4" fill="#24aae2"/>
+                    <path d="M20 20v12M44 20v12" stroke="#24aae2" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+            </h2>
+            <p>Join thousands of music lovers who chose freedom over premium</p>
+            <div class="cta-buttons">
+                <a href="#" class="primary-btn" onclick="downloadAPK()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 3v12M12 15l-4-4M12 15l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M3 17v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Download APK Now
+                </a>
+                <a href="#features" class="secondary-btn">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Additional Features -->
+        <div class="features" id="features">
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="32" r="30" fill="#24aae2" opacity="0.2"/>
+                    <ellipse cx="22" cy="32" rx="8" ry="16" fill="#24aae2"/>
+                    <ellipse cx="42" cy="32" rx="8" ry="16" fill="#24aae2"/>
+                    <path d="M20 20h24M20 44h24" stroke="#24aae2" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+                <h3>Massive Music Library</h3>
+                <p>Explore millions of tracks across all genres. From classics to the latest hits.</p>
+            </div>
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="32" r="30" fill="#24aae2" opacity="0.2"/>
+                    <rect x="16" y="12" width="32" height="40" rx="4" fill="#24aae2"/>
+                    <rect x="20" y="16" width="24" height="32" rx="2" fill="#063a50"/>
+                    <circle cx="32" cy="52" r="2" fill="#ffffff"/>
+                </svg>
+                <h3>Sleek Interface</h3>
+                <p>Beautiful, intuitive design that makes discovering and playing music effortless.</p>
+            </div>
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="32" r="30" fill="#24aae2" opacity="0.2"/>
+                    <path d="M32 12l4 12h12l-10 8 4 12-10-8-10 8 4-12-10-8h12l4-12z" fill="#24aae2"/>
+                    <path d="M20 15l3 3M44 15l-3 3M52 28l-4 1M12 28l4 1M48 44l-2-3M16 44l2-3" stroke="#24aae2" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <h3>Lightning Fast</h3>
+                <p>Quick loading, smooth playback, and instant search results for the best experience.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-links">
+            <a href="#about">About Us</a>
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p>© 2026 Freebie Music. All rights reserved. Music freedom for everyone.</p>
+    </div>
+
+    <script>
+        function downloadAPK() {
+            // Replace FILE_ID with your Google Drive file ID
+            // Example: If your link is https://drive.google.com/file/d/1ABC123xyz/view
+            // Then FILE_ID is: 1ABC123xyz
+            const GOOGLE_DRIVE_FILE_ID = 'YOUR_FILE_ID_HERE';
+            
+            // This converts Google Drive link to direct download
+            const downloadURL = `https://drive.google.com/uc?export=download&id=${GOOGLE_DRIVE_FILE_ID}`;
+            
+            alert('🎉 Thank you for choosing Freebie Music!\n\nYour download will begin shortly.\n\nGet ready to enjoy unlimited music without any restrictions!');
+            
+            // Start download
+            window.location.href = downloadURL;
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
